@@ -1,0 +1,22 @@
+import { Route, Routes } from 'react-router-dom'
+import { SiteLayout } from './components/layout/SiteLayout'
+import { FoundationPage } from './pages/FoundationPage'
+import { PlaceholderPage } from './pages/PlaceholderPage'
+
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<SiteLayout />}>
+        <Route index element={<FoundationPage />} />
+        <Route path="products" element={<PlaceholderPage />} />
+        <Route path="services" element={<PlaceholderPage />} />
+        <Route path="projects" element={<PlaceholderPage />} />
+        <Route path="industries" element={<PlaceholderPage />} />
+        <Route path="brands" element={<PlaceholderPage />} />
+        <Route path="about" element={<PlaceholderPage />} />
+        <Route path="contact" element={<PlaceholderPage />} />
+        <Route path="*" element={<PlaceholderPage />} />
+      </Route>
+    </Routes>
+  )
+}
