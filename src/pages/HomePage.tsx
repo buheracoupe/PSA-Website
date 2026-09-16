@@ -15,17 +15,15 @@ const products = [
 const manufacturers = [
   { name: 'Wilo', logo: 'https://wilo.com/fileadmin/_processed_/7/5/csm_Wilo_Logo_4C_96b795b7c8.png' },
   { name: 'KSB', logo: '/brand/ksb-logo-data (1).svg' },
-  { name: 'Grundfos', logo: '/brand/grundfos png.png' },
-  { name: 'CRI Pumps', logo: '/brand/CRI logo.jpg' },
+  { name: 'Grundfos', logo: '/brand/standardized/grundfos.svg' },
+  { name: 'CRI Pumps', logo: '/brand/standardized/cri.svg' },
   { name: 'Gorman-Rupp', logo: 'https://www.gormanrupp.com/hs-fs/hubfs/GR-Company_-1.png?height=160&name=GR-Company_-1.png&width=200' },
   { name: 'Tesk', logo: 'https://www.teskpump.co.za/img/t/svg/tesk-water-technologies-south-africa.svg' },
   { name: 'Turbofluid', logo: 'https://turbofluid.co.za/wp-content/uploads/2020/07/Turbofluid-Logo.png' },
-  { name: 'Corro Pump', logo: '/brand/corro pump manufacturing.png' },
-  { name: 'Xylem', logo: '/brand/xylem logo.png' },
+  { name: 'Corro Pump', logo: '/brand/standardized/corro.svg' },
+  { name: 'Xylem', logo: '/brand/standardized/xylem.svg' },
 ]
 
-// Marker positions are tuned to the visible Zimbabwe silhouette. Wanezi is in Insiza District,
-// Matabeleland South (approx. 20.541°S, 29.580°E), south-east of Bulawayo and west of Masvingo.
 const projects = [
   { name: 'Kanyemba', place: 'Mashonaland Central', meta: 'Water and energy infrastructure · northern Zambezi border', x: 53, y: 15 },
   { name: 'Gororo Irrigation', place: 'Chivi District, Masvingo', meta: '50 ha irrigation · 168 kWp solar', x: 43, y: 65 },
