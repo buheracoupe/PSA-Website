@@ -13,14 +13,14 @@ const products = [
 ]
 
 const manufacturers = [
-  { name: 'Wilo', logo: 'https://wilo.com/fileadmin/_processed_/7/5/csm_Wilo_Logo_4C_96b795b7c8.png' },
+  { name: 'Wilo', logo: '/brand/wilo logo.png' },
   { name: 'KSB', logo: '/brand/ksb-logo-data (1).svg' },
   { name: 'Grundfos', logo: '/brand/grundfos logo.png' },
   { name: 'CRI Pumps', logo: '/brand/CRI logo.png' },
   { name: 'Gorman-Rupp', logo: 'https://www.gormanrupp.com/hs-fs/hubfs/GR-Company_-1.png?height=160&name=GR-Company_-1.png&width=200' },
   { name: 'Tesk', logo: 'https://www.teskpump.co.za/img/t/svg/tesk-water-technologies-south-africa.svg' },
   { name: 'Turbofluid', logo: '/brand/turbofluid logo.png' },
-  { name: 'Corro Pump', logo: '/brand/standardized/corro.svg' },
+  { name: 'Corro Pump', logo: '/brand/corro pump manufacturing.png' },
   { name: 'Xylem', logo: '/brand/xylem logo.png' },
 ]
 
