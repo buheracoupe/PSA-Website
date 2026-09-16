@@ -13,7 +13,7 @@ const products = [
 ]
 
 const manufacturers = [
-  { name: 'Wilo', logo: '/brand/wilo logo.png' },
+  { name: 'Wilo', logo: '/brand/Wilo png.png' },
   { name: 'KSB', logo: '/brand/ksb-logo-data (1).svg' },
   { name: 'Grundfos', logo: '/brand/grundfos logo.png' },
   { name: 'CRI Pumps', logo: '/brand/CRI logo.png' },
