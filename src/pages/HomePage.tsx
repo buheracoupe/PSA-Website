@@ -13,13 +13,13 @@ const products = [
 ]
 
 const manufacturers = [
-  { name: 'Wilo', cssLogo: true },
+  { name: 'Wilo', logo: 'https://wilo.com/fileadmin/_processed_/7/5/csm_Wilo_Logo_4C_96b795b7c8.png' },
   { name: 'KSB', logo: '/brand/ksb-logo-data (1).svg' },
   { name: 'Grundfos', logo: '/brand/grundfos logo.png' },
-  { name: 'CRI Pumps', logo: '/brand/standardized/cri.svg' },
+  { name: 'CRI Pumps', logo: '/brand/CRI logo.png' },
   { name: 'Gorman-Rupp', logo: 'https://www.gormanrupp.com/hs-fs/hubfs/GR-Company_-1.png?height=160&name=GR-Company_-1.png&width=200' },
   { name: 'Tesk', logo: 'https://www.teskpump.co.za/img/t/svg/tesk-water-technologies-south-africa.svg' },
-  { name: 'Turbofluid', logo: 'https://turbofluid.co.za/wp-content/uploads/2020/07/Turbofluid-Logo.png' },
+  { name: 'Turbofluid', logo: '/brand/turbofluid logo.png' },
   { name: 'Corro Pump', logo: '/brand/standardized/corro.svg' },
   { name: 'Xylem', logo: '/brand/xylem logo.png' },
 ]
@@ -46,7 +46,7 @@ export function HomePage() {
       <div className="hero-engineering-card"><div className="engineering-rings"><Droplets size={54}/></div><span className="eyebrow">Pump Systems Africa Engineering</span><h2>Built around the duty. Not the catalogue.</h2><p>We connect equipment selection, system design, installation and support into practical solutions that perform in the field.</p><div className="engineering-metrics"><span><Gauge/> System selection</span><span><ShieldCheck/> Field support</span></div></div>
     </div></section>
 
-    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className={brand.name==='Wilo'?'manufacturer-logo manufacturer-primary':'manufacturer-logo'} key={`${brand.name}-${index}`}>{brand.cssLogo ? <div className="wilo-css-logo" aria-label="Wilo"><span className="wilo-wordmark">wilo</span></div> : <img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/>}<span className="manufacturer-name">{brand.name}</span></div>)}</div></div></section>
+    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className={brand.name==='Wilo'?'manufacturer-logo manufacturer-primary':'manufacturer-logo'} key={`${brand.name}-${index}`}><img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/><span className="manufacturer-name">{brand.name}</span></div>)}</div></div></section>
 
     <section className="section home-section"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we deliver</span><h2>Systems, not just equipment.</h2></div><p>Pump Systems Africa combines pump expertise with field engineering, water infrastructure and renewable energy capability.</p></div><div className="service-grid">{services.map(({icon:Icon,title,text})=><article className="service-card" key={title}><div className="service-icon"><Icon/></div><h3>{title}</h3><p>{text}</p><Link to="/services">Discover capability <ArrowRight size={15}/></Link></article>)}</div></div></section>
 
