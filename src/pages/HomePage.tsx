@@ -1,4 +1,4 @@
-import { ArrowRight, Droplets, Gauge, MapPin, ShieldCheck, Sun, Wrench, Zap } from 'lucide-react'
+import { ArrowRight, Building2, Droplets, Factory, Gauge, MapPin, Pickaxe, ShieldCheck, Sprout, Sun, Waves, Wrench, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const services = [
@@ -11,13 +11,33 @@ const products = [
   { brand: 'KSB', title: 'Etanorm', text: 'A proven end-suction pump platform and an important part of Pump Systems Africa’s installed pumping experience.' },
   { brand: 'Pump Systems Africa', title: 'Multistage Pumps', text: 'Horizontal and vertical multistage configurations for higher-pressure duties and demanding installations.' },
 ]
-const manufacturers = ['Wilo', 'KSB', 'Grundfos', 'CRI Pumps', 'Gorman-Rupp', 'Tesk', 'Turbofluid', 'Corro Pumps', 'Xylem']
+
+const manufacturers = [
+  { name: 'Wilo', logo: 'https://wilo.com/fileadmin/_processed_/7/5/csm_Wilo_Logo_4C_96b795b7c8.png' },
+  { name: 'KSB', logo: 'https://www.ksb.com/.resources/ksb/webresources/assets/img/logo.svg' },
+  { name: 'Grundfos', logo: 'https://www.grundfos.com/etc.clientlibs/grundfos/clientlibs/clientlib-site/resources/images/grundfos-logo.svg' },
+  { name: 'CRI Pumps', logo: 'https://www.crigroups.com/wp-content/uploads/2023/03/cri-logo.png' },
+  { name: 'Gorman-Rupp', logo: 'https://www.gormanrupp.com/hs-fs/hubfs/GR-Company_-1.png?height=160&name=GR-Company_-1.png&width=200' },
+  { name: 'Tesk', logo: 'https://www.teskpump.co.za/img/t/svg/tesk-water-technologies-south-africa.svg' },
+  { name: 'Turbofluid', logo: 'https://turbofluid.co.za/wp-content/uploads/2020/07/Turbofluid-Logo.png' },
+  { name: 'Corro Pump', logo: 'https://corropump.co.za/wp-content/uploads/2021/03/corro-pump-logo.png' },
+  { name: 'Xylem', logo: 'https://www.xylem.com/siteassets/brand/xylem-logo.svg' },
+]
+
+// Marker positions are mapped to the actual project districts/known coordinates, not decorative placement.
 const projects = [
-  { name: 'Gororo Irrigation', place: 'Zimbabwe', meta: '50 ha irrigation · 168 kWp solar', x: 46, y: 47 },
-  { name: 'Africa University', place: 'Mutare', meta: 'Institutional solar installation · 25 kVA', x: 75, y: 55 },
-  { name: 'Wanezi', place: 'Zimbabwe', meta: 'Irrigation · pumping · water treatment', x: 54, y: 70 },
-  { name: 'Gudyanga & Maunganidze', place: 'Zimbabwe', meta: 'Solar water infrastructure', x: 70, y: 77 },
-  { name: 'Kanyemba', place: 'Zimbabwe', meta: 'Water and energy infrastructure', x: 45, y: 16 },
+  { name: 'Kanyemba', place: 'Mashonaland Central', meta: 'Water and energy infrastructure · northern Zambezi border', x: 53, y: 15 },
+  { name: 'Gororo Irrigation', place: 'Chivi District, Masvingo', meta: '50 ha irrigation · 168 kWp solar', x: 43, y: 65 },
+  { name: 'Wanezi', place: 'Insiza District, Matabeleland South', meta: 'Irrigation · pumping · water treatment', x: 27, y: 69 },
+  { name: 'Africa University', place: 'Mutare, Manicaland', meta: 'Institutional solar installation · 25 kVA', x: 76, y: 52 },
+  { name: 'Gudyanga & Maunganidze', place: 'Manicaland', meta: 'Irrigation · solar pumping infrastructure', x: 73, y: 69 },
+]
+
+const applications = [
+  { icon: Sprout, title: 'Agriculture & Irrigation', text: 'Irrigation schemes, abstraction and agricultural water systems.' },
+  { icon: Waves, title: 'Water & Wastewater', text: 'Transfer, treatment, drainage and municipal water infrastructure.' },
+  { icon: Pickaxe, title: 'Mining & Industry', text: 'Robust pumping for process, dewatering and industrial duties.' },
+  { icon: Building2, title: 'Commercial & Building Services', text: 'Pressure boosting, circulation and building water services.' },
 ]
 
 export function HomePage() {
@@ -27,7 +47,7 @@ export function HomePage() {
       <div className="hero-engineering-card"><div className="engineering-rings"><Droplets size={54}/></div><span className="eyebrow">Pump Systems Africa Engineering</span><h2>Built around the duty. Not the catalogue.</h2><p>We connect equipment selection, system design, installation and support into practical solutions that perform in the field.</p><div className="engineering-metrics"><span><Gauge/> System selection</span><span><ShieldCheck/> Field support</span></div></div>
     </div></section>
 
-    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((name,index)=><span className={name==='Wilo'?'manufacturer-name manufacturer-primary':'manufacturer-name'} key={`${name}-${index}`}>{name}</span>)}</div></div></section>
+    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className={brand.name==='Wilo'?'manufacturer-logo manufacturer-primary':'manufacturer-logo'} key={`${brand.name}-${index}`}><img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/><span>{brand.name}</span></div>)}</div></div></section>
 
     <section className="section home-section"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we deliver</span><h2>Systems, not just equipment.</h2></div><p>Pump Systems Africa combines pump expertise with field engineering, water infrastructure and renewable energy capability.</p></div><div className="service-grid">{services.map(({icon:Icon,title,text})=><article className="service-card" key={title}><div className="service-icon"><Icon/></div><h3>{title}</h3><p>{text}</p><Link to="/services">Discover capability <ArrowRight size={15}/></Link></article>)}</div></div></section>
 
@@ -37,7 +57,7 @@ export function HomePage() {
 
     <section className="section energy-section"><div className="container energy-grid"><div className="energy-panel"><Sun size={42}/><span className="energy-line"/><Zap size={28}/></div><div><span className="eyebrow">Integrated energy</span><h2>When pumping meets solar.</h2><p>Pump Systems Africa’s renewable-energy capability supports water systems where grid reliability, operating cost or remote access makes conventional power difficult.</p><div className="feature-list"><span><ShieldCheck/> Solar pumping systems</span><span><ShieldCheck/> VSD and hybrid configurations</span><span><ShieldCheck/> Institutional and agricultural installations</span></div><Link to="/services" className="text-link animated-link">Explore solar capability <ArrowRight size={16}/></Link></div></div></section>
 
-    <section className="section industries-section"><div className="container"><span className="eyebrow">Applications</span><h2>Designed for demanding environments.</h2><div className="industry-row"><span>Agriculture & Irrigation</span><span>Water & Wastewater</span><span>Mining & Industry</span><span>Commercial & Building Services</span></div></div></section>
+    <section className="section industries-section"><div className="container"><span className="eyebrow">Applications</span><h2>Designed for demanding environments.</h2><div className="industry-row">{applications.map(({icon:Icon,title,text})=><article className="industry-card" key={title}><Icon/><div><strong>{title}</strong><p>{text}</p></div></article>)}</div></div></section>
     <section className="cta-section"><div className="container cta-inner"><div><span className="eyebrow">Start with the duty</span><h2>Have a pumping or water challenge?</h2><p>Tell our team what the system needs to achieve. We’ll help you move from requirement to engineered solution.</p></div><Link to="/contact" className="button button-light">Request a Quote <ArrowRight size={18}/></Link></div></section>
   </>
 }
