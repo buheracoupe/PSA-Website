@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Droplets, Factory, Gauge, MapPin, Pickaxe, ShieldCheck, Sprout, Sun, Waves, Wrench, Zap } from 'lucide-react'
+import { ArrowRight, Building2, Droplets, Gauge, MapPin, Pickaxe, ShieldCheck, Sprout, Sun, Waves, Wrench, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const services = [
@@ -14,21 +14,22 @@ const products = [
 
 const manufacturers = [
   { name: 'Wilo', logo: 'https://wilo.com/fileadmin/_processed_/7/5/csm_Wilo_Logo_4C_96b795b7c8.png' },
-  { name: 'KSB', logo: 'https://www.ksb.com/.resources/ksb/webresources/assets/img/logo.svg' },
-  { name: 'Grundfos', logo: 'https://www.grundfos.com/etc.clientlibs/grundfos/clientlibs/clientlib-site/resources/images/grundfos-logo.svg' },
-  { name: 'CRI Pumps', logo: 'https://www.crigroups.com/wp-content/uploads/2023/03/cri-logo.png' },
+  { name: 'KSB', logo: '/brand/ksb-logo-data (1).svg' },
+  { name: 'Grundfos', logo: '/brand/grundfos png.png' },
+  { name: 'CRI Pumps', logo: '/brand/CRI logo.jpg' },
   { name: 'Gorman-Rupp', logo: 'https://www.gormanrupp.com/hs-fs/hubfs/GR-Company_-1.png?height=160&name=GR-Company_-1.png&width=200' },
   { name: 'Tesk', logo: 'https://www.teskpump.co.za/img/t/svg/tesk-water-technologies-south-africa.svg' },
   { name: 'Turbofluid', logo: 'https://turbofluid.co.za/wp-content/uploads/2020/07/Turbofluid-Logo.png' },
-  { name: 'Corro Pump', logo: 'https://corropump.co.za/wp-content/uploads/2021/03/corro-pump-logo.png' },
-  { name: 'Xylem', logo: 'https://www.xylem.com/siteassets/brand/xylem-logo.svg' },
+  { name: 'Corro Pump', logo: '/brand/corro pump manufacturing.png' },
+  { name: 'Xylem', logo: '/brand/xylem logo.png' },
 ]
 
-// Marker positions are mapped to the actual project districts/known coordinates, not decorative placement.
+// Marker positions are tuned to the visible Zimbabwe silhouette. Wanezi is in Insiza District,
+// Matabeleland South (approx. 20.541°S, 29.580°E), south-east of Bulawayo and west of Masvingo.
 const projects = [
   { name: 'Kanyemba', place: 'Mashonaland Central', meta: 'Water and energy infrastructure · northern Zambezi border', x: 53, y: 15 },
   { name: 'Gororo Irrigation', place: 'Chivi District, Masvingo', meta: '50 ha irrigation · 168 kWp solar', x: 43, y: 65 },
-  { name: 'Wanezi', place: 'Insiza District, Matabeleland South', meta: 'Irrigation · pumping · water treatment', x: 27, y: 69 },
+  { name: 'Wanezi', place: 'Insiza District, Matabeleland South', meta: 'Irrigation · pumping · water treatment', x: 37, y: 73 },
   { name: 'Africa University', place: 'Mutare, Manicaland', meta: 'Institutional solar installation · 25 kVA', x: 76, y: 52 },
   { name: 'Gudyanga & Maunganidze', place: 'Manicaland', meta: 'Irrigation · solar pumping infrastructure', x: 73, y: 69 },
 ]
