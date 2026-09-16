@@ -9,7 +9,7 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand brand-lockup" aria-label="Pump Systems Africa home">
-          <img className="brand-turbine" src="/brand/standardized/psa-turbine.svg" alt="" aria-hidden="true" />
+          <img className="brand-turbine" src="/brand/psa-turbine-clean.png" alt="" aria-hidden="true" />
           <span className="brand-wordmark"><strong>PUMP SYSTEMS AFRICA</strong><small>Reliable solutions for a flowing tomorrow</small></span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
