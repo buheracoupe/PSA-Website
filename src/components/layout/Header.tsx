@@ -9,7 +9,8 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand brand-lockup" aria-label="Pump Systems Africa home">
-          <img className="brand-official-logo" src="/brand/psa-logo.png" alt="Pump Systems Africa" />
+          <img className="brand-turbine" src="/brand/standardized/psa-turbine.svg" alt="" aria-hidden="true" />
+          <span className="brand-wordmark"><strong>PUMP SYSTEMS AFRICA</strong><small>Reliable solutions for a flowing tomorrow</small></span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => <NavLink key={item.href} to={item.href} className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>{item.label}</NavLink>)}
