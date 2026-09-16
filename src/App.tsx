@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { HomePage } from './pages/HomePage'
+import { ProjectsPage } from './pages/ProjectsPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="products" element={<PlaceholderPage />} />
         <Route path="services" element={<PlaceholderPage />} />
-        <Route path="projects" element={<PlaceholderPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
         <Route path="industries" element={<PlaceholderPage />} />
         <Route path="brands" element={<PlaceholderPage />} />
         <Route path="about" element={<PlaceholderPage />} />
@@ -20,3 +21,4 @@ export default function App() {
     </Routes>
   )
 }
+
