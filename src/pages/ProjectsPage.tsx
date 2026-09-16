@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, Images, Sun, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import '../styles/projects.css'
+import { WaterProjects } from '../components/WaterProjects'
 
 type Photo = { file: string; caption: string }
 type Project = { id: string; name: string; client: string; category: string; description: string; stats: [string, string][]; photos: Photo[] }
@@ -78,7 +79,7 @@ export function ProjectsPage() {
   const [gallery, setGallery] = useState<Project | null>(null)
   useEffect(() => {
     const previousTitle = document.title
-    document.title = 'Solar Projects | Pump Systems Africa'
+    document.title = 'Projects | Pump Systems Africa'
     return () => { document.title = previousTitle }
   }, [])
   const featured = projects[0]
@@ -86,8 +87,10 @@ export function ProjectsPage() {
   return <div className="solar-page">
     <header className="solar-intro container">
       <nav className="solar-breadcrumb" aria-label="Breadcrumb"><Link to="/">Home</Link><span>/</span><span aria-current="page">Projects</span></nav>
-      <div className="solar-intro-grid"><div><span className="solar-kicker">Our work in the field</span><h1>Engineering.<br />Put to work.</h1></div><div className="solar-intro-copy"><p>Pumping expertise. Water infrastructure. Energy that supports both.</p><p>Explore our solar project experience, from agricultural water systems to institutional power across Zimbabwe.</p><a href="#solar-projects">Explore the collection <ArrowDown size={17} /></a></div></div>
+      <div className="solar-intro-grid"><div><span className="solar-kicker">Our work in the field</span><h1>Engineering.<br />Put to work.</h1></div><div className="solar-intro-copy"><p>Pumping expertise. Water infrastructure. Energy that supports both.</p><p>Explore pumping, water-treatment and solar installations across Zimbabwe and the region.</p><div className="project-collection-links"><a href="#water-projects">Pumping & water <ArrowDown size={17} /></a><a href="#solar-projects">Solar projects <ArrowDown size={17} /></a></div></div></div>
     </header>
+
+    <WaterProjects />
 
     <section id="solar-projects" className="solar-collection" aria-labelledby="solar-collection-title">
       <div className="container">

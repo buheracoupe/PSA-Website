@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const services = [
   { icon: Droplets, title: 'Pump Systems', text: 'Engineered pumping solutions for water supply, irrigation, industry and infrastructure.' },
-  { icon: Wrench, title: 'Pump Repairs', text: 'Inspection, repair and maintenance support focused on restoring dependable performance.' },
+  { icon: Wrench, title: 'Pump Repairs', text: 'Harare workshop support for pump refurbishment, reconditioning, servicing and condition monitoring.' },
   { icon: Sun, title: 'Solar Installations', text: 'Solar-powered pumping and energy systems for resilient off-grid and hybrid applications.' },
 ]
 const products = [
@@ -48,7 +48,7 @@ export function HomePage() {
 
     <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className={brand.name==='Wilo'?'manufacturer-logo manufacturer-primary':'manufacturer-logo'} key={`${brand.name}-${index}`}><img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/><span className="manufacturer-name">{brand.name}</span></div>)}</div></div></section>
 
-    <section className="section home-section"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we deliver</span><h2>Systems, not just equipment.</h2></div><p>Pump Systems Africa combines pump expertise with field engineering, water infrastructure and renewable energy capability.</p></div><div className="service-grid">{services.map(({icon:Icon,title,text})=><article className="service-card" key={title}><div className="service-icon"><Icon/></div><h3>{title}</h3><p>{text}</p><Link to="/services">Discover capability <ArrowRight size={15}/></Link></article>)}</div></div></section>
+    <section className="section home-section"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we deliver</span><h2>Systems, not just equipment.</h2></div><p>Established in 2007, Pump Systems Africa combines pump expertise with field engineering, water infrastructure and workshop support.</p></div><div className="service-grid">{services.map(({icon:Icon,title,text})=><article className="service-card" key={title}><div className="service-icon"><Icon/></div><h3>{title}</h3><p>{text}</p><Link to="/services">Discover capability <ArrowRight size={15}/></Link></article>)}</div></div></section>
 
     <section className="section product-showcase"><div className="container"><div className="section-heading"><div><span className="eyebrow">Featured equipment</span><h2>Pumps selected for the application.</h2></div><Link className="text-link animated-link" to="/products">View product range <ArrowRight size={16}/></Link></div><div className="product-grid">{products.map((product,index)=><article className={`product-card product-card-${index+1}`} key={product.title}><div className="product-visual"><div className="pump-silhouette"><span/><span/><span/></div><small>Approved manufacturer product imagery will replace this technical placeholder</small></div><div className="product-copy"><span className="product-brand">{product.brand}</span><h3>{product.title}</h3><p>{product.text}</p><Link to="/products">Technical overview <ArrowRight size={15}/></Link></div></article>)}</div></div></section>
 

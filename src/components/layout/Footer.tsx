@@ -17,16 +17,16 @@ export function Footer() {
         </div>
         <div>
           <h3>Contact</h3>
-          <div className="footer-contact"><p>22 Neil Avenue, Msasa, Harare</p><a href="tel:+263773557800">+263 773 557 800</a><a href="mailto:enquiries@pumpsystemsafrica.com">enquiries@pumpsystemsafrica.com</a></div>
+          <div className="footer-contact"><p>22 Neil Avenue, Msasa, Harare</p><a href="https://wa.me/263773557800" target="_blank" rel="noopener noreferrer">WhatsApp: +263 773 557 800</a><a href="mailto:enquiries@pumpsystemsafrica.com">enquiries@pumpsystemsafrica.com</a></div>
         </div>
         <div>
           <h3>Follow</h3>
           <div className="social-row" aria-label="Social media links">
-            <a href="#" aria-label="WhatsApp" title="WhatsApp"><FaWhatsapp /></a>
+            <a href="https://wa.me/263773557800" target="_blank" rel="noopener noreferrer" aria-label="Chat with Pump Systems Africa on WhatsApp" title="WhatsApp: +263 773 557 800"><FaWhatsapp /></a>
             <a href="#" aria-label="Facebook" title="Facebook"><FaFacebookF /></a>
             <a href="#" aria-label="LinkedIn" title="LinkedIn"><FaLinkedinIn /></a>
           </div>
-          <p className="footer-muted">Social links will be connected before launch.</p>
+
         </div>
       </div>
       <div className="container footer-bottom"><span>© 2026 Pump Systems Africa</span><span>Built for a stronger water future.</span></div>
