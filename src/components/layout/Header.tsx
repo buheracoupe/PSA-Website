@@ -2,6 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { navigation } from '../../data/navigation'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -15,7 +16,7 @@ export function Header() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => <NavLink key={item.href} to={item.href} className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>{item.label}</NavLink>)}
         </nav>
-        <div className="header-actions">
+        <div className="header-actions"><ThemeToggle />
           <Link className="button button-primary desktop-quote" to="/contact">Get a Quote</Link>
           <button className="menu-button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(value => !value)}>{open ? <X size={24}/> : <Menu size={24}/>}</button>
         </div>

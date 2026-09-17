@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { HomePage } from './pages/HomePage'
 import { ProjectsPage } from './pages/ProjectsPage'
@@ -14,7 +14,7 @@ export default function App() {
         <Route path="products" element={<PlaceholderPage />} />
         <Route path="services" element={<ServicesPage />} />
         <Route path="projects" element={<ProjectsPage />} />
-        <Route path="industries" element={<PlaceholderPage />} />
+        <Route path="industries" element={<Navigate to="/about#applications" replace />} />
         <Route path="brands" element={<PlaceholderPage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
