@@ -1,0 +1,87 @@
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --psa-ink: #e5eef5;
+  --psa-slate: #aec2d1;
+  --psa-border: #2c4659;
+  --psa-mist: #193449;
+  --theme-bg: #081725;
+  --theme-surface: #102638;
+  --theme-raised: #163146;
+  --theme-text: #e5eef5;
+  --theme-muted: #aec2d1;
+  --theme-accent: #73d6ef;
+}
+.header-actions { flex-shrink: 0; }
+.theme-toggle {
+  display: inline-grid; place-items: center; width: 42px; height: 42px;
+  flex-shrink: 0; padding: 0; border: 1px solid var(--psa-border);
+  border-radius: 50%; background: var(--psa-mist); color: #174967; cursor: pointer;
+}
+.theme-toggle:hover { background: #dceef6; }
+.theme-toggle:focus-visible { outline: 3px solid #087ccb; outline-offset: 4px; }
+html[data-theme="dark"] body { background: var(--theme-bg); color: var(--theme-text); }
+html[data-theme="dark"] .site-header { background: #081725f5; border-color: var(--psa-border); }
+html[data-theme="dark"] .brand-wordmark strong { color: #e5eef5; }
+html[data-theme="dark"] .brand-wordmark small { color: var(--theme-muted); }
+html[data-theme="dark"] .brand-turbine {
+  width: 58px!important; height: 58px!important; flex: 0 0 58px;
+  object-position: center; background: #fff; border-radius: 50%; padding: 4px;
+}
+@media (max-width: 1050px) {
+  html[data-theme="dark"] .brand-turbine { width: 52px!important; height: 52px!important; flex-basis: 52px; }
+}
+@media (max-width: 720px) {
+  html[data-theme="dark"] .brand-turbine { width: 46px!important; height: 46px!important; flex-basis: 46px; }
+}
+html[data-theme="dark"] :is(.nav-link, .menu-button, .theme-toggle) { color: var(--theme-text); }
+html[data-theme="dark"] :is(.nav-link:hover, .nav-link.active, .theme-toggle:hover) { color: var(--theme-accent); background: var(--theme-raised); }
+html[data-theme="dark"] .mobile-nav { background: var(--theme-surface); border-color: var(--psa-border); }
+html[data-theme="dark"] .mobile-nav a:not(.button) { border-color: var(--psa-border); }
+html[data-theme="dark"] :is(.brand-rail, .energy-section, .solar-page) { background: var(--theme-bg); }
+html[data-theme="dark"] :is(.product-showcase, .industries-section, .company-service-section, .water-projects, .solar-collection, .contact-visit, .company-contact, .solar-contact) { background: var(--theme-surface); }
+html[data-theme="dark"] .section-tint { background: var(--theme-surface); }
+html[data-theme="dark"] :is(.service-card, .product-card, .industry-card, .company-services article, .water-project-grid article, .solar-case, .contact-location) { background: var(--theme-raised); border-color: var(--psa-border); }
+html[data-theme="dark"] .industry-card { border-color: var(--psa-border)!important; }
+html[data-theme="dark"] :is(.section h2, .home-section h2, .service-card h3, .product-copy h3, .energy-grid h2, .industry-card strong, .contact-page, .placeholder-page h1) { color: var(--theme-text); }
+html[data-theme="dark"] :is(.service-card a, .product-card a, .text-link, .product-brand, .service-icon, .industry-card>svg, .company-eyebrow, .company-text-link, .company-services article>svg, .company-values article>span, .solar-kicker, .solar-client, .solar-gallery-button, .contact-kicker, .contact-channel>svg:first-child, .contact-location-details>svg, .contact-preparation a) { color: var(--theme-accent); }
+html[data-theme="dark"] :is(.brand-rail-heading>span, .brand-rail-heading small, .industry-card p, .company-breadcrumb, .company-lead, .company-story-copy>p, .company-section-head>p, .company-values p, .company-facts span, .company-services p, .company-delivery span, .water-project-grid p, .solar-breadcrumb, .solar-intro-copy p, .solar-description, .solar-category, .solar-collection-note, .solar-gallery-button span, .solar-stats dt, .solar-additional-intro>p, .solar-assignment-list p, .solar-assignment-list strong span, .solar-assignment-number, .solar-contact p, .contact-intro nav, .contact-intro>p, .contact-channels>p, .contact-channel small, .contact-channel em, .contact-visit-heading>p, .contact-location address, .contact-copy, .contact-postal small, .contact-postal p, .contact-preparation p, .contact-preparation li) { color: var(--theme-muted); }
+html[data-theme="dark"] :is(.company-intro h1 span, .contact-intro h1 span) { color: #98bdd3; }
+html[data-theme="dark"] :is(.company-sectors>div span, .company-service-nav a, .company-services li, .solar-project-nav a) { color: #c4d8e6; }
+html[data-theme="dark"] .solar-intro-copy p:first-child { color: var(--theme-text); }
+html[data-theme="dark"] :is(.company-facts, .company-values article, .company-sectors>div span, .company-service-nav a, .company-services li, .company-delivery li, .solar-project-nav, .solar-stats, .solar-assignment-list article, .solar-contact, .solar-intro-copy a, .contact-channel, .contact-postal, .contact-preparation li) { border-color: var(--psa-border); }
+html[data-theme="dark"] :is(.company-delivery li:before, .contact-preparation li:before) { color: var(--theme-accent); }
+html[data-theme="dark"] .solar-category svg { color: #e4bb60; }
+html[data-theme="dark"] :is(.company-story-image, .contact-team-photo, .contact-map) { background: var(--theme-surface); }
+html[data-theme="dark"] .contact-whatsapp { background: #10372f; border-color: #28604e; }
+html[data-theme="dark"] .contact-whatsapp>svg:first-child { color: #77e0b2; }
+html[data-theme="dark"] .contact-copy-status { color: #77e0b2; }
+html[data-theme="dark"] .contact-channel:hover strong { color: var(--theme-accent); }
+html[data-theme="dark"] .contact-map>a { background: var(--theme-raised); border-color: var(--psa-border); color: var(--theme-accent); }
+html[data-theme="dark"] .contact-map iframe { color-scheme: light; }
+html[data-theme="dark"] :is(.product-visual, .product-card-1 .product-visual) { background: radial-gradient(circle at 50% 45%, #1cc8e819, transparent 60%), #19394e; }
+html[data-theme="dark"] .product-visual small { color: #b3cbd9; }
+html[data-theme="dark"] .pump-silhouette { opacity: .85; }
+html[data-theme="dark"] .placeholder-page { background: linear-gradient(180deg, #102638, #081725); }
+html[data-theme="dark"] .button-secondary { color: var(--theme-text); background: var(--theme-raised); border-color: #607f94; }
+/* Keep the existing dark feature panels and original manufacturer artwork intact. */
+html[data-theme="dark"] .company-purpose .company-lead { color: #fff; }
+html[data-theme="dark"] .solar-feature .solar-kicker { color: #e4bb60; }
+html[data-theme="dark"] .solar-feature .solar-gallery-button { color: #fff; }
+html[data-theme="dark"] .manufacturer-logo { color-scheme: light; }
+html[data-theme="dark"] :is(a, button):focus-visible { outline: 3px solid #73d6ef; outline-offset: 4px; }
+@media (max-width: 1200px) {
+  .desktop-nav { display: none; }
+  .menu-button { display: grid; place-items: center; }
+  .header-actions { margin-left: auto; }
+}
+@media (max-width: 380px) {
+  .brand-wordmark strong { font-size: .66rem; }
+  .header-actions { gap: 3px; }
+  .theme-toggle { width: 36px; height: 36px; }
+  .menu-button { padding: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+html[data-theme="dark"] .feature-list span { color: var(--theme-text); }
+html[data-theme="dark"] .feature-list svg { color: var(--theme-accent); }

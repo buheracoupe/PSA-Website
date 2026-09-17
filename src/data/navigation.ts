@@ -3,7 +3,6 @@ export const navigation = [
   { label: 'Products', href: '/products' },
   { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Industries', href: '/industries' },
   { label: 'Brands', href: '/brands' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
