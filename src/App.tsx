@@ -3,6 +3,7 @@ import { SiteLayout } from './components/layout/SiteLayout'
 import { HomePage } from './pages/HomePage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { AboutPage, ServicesPage } from './pages/CompanyPages'
+import { ContactPage } from './pages/ContactPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
         <Route path="industries" element={<PlaceholderPage />} />
         <Route path="brands" element={<PlaceholderPage />} />
         <Route path="about" element={<AboutPage />} />
-        <Route path="contact" element={<PlaceholderPage />} />
+        <Route path="contact" element={<ContactPage />} />
         <Route path="*" element={<PlaceholderPage />} />
       </Route>
     </Routes>

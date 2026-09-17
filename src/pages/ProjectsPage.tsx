@@ -116,7 +116,7 @@ export function ProjectsPage() {
       <article><span className="solar-assignment-number">07</span><div><span className="solar-client">Government of Zimbabwe · 2020</span><h3>Kanyemba hybrid mini-grid</h3><p>Design of a hybrid solar power plant and local solar-grid architecture.</p></div><strong>1 MVA<span>Design scope</span></strong></article>
     </div></section>
 
-    <section className="solar-contact"><div className="container"><div><span className="solar-kicker">Start with the system</span><h2>Let’s put the right<br />solution to work.</h2><p>Talk to PSA about pumping, water infrastructure and the energy to support it.</p></div><a className="button button-light" href="mailto:enquiries@pumpsystemsafrica.net">Discuss your project <ArrowRight size={18} /></a></div></section>
+    <section className="solar-contact"><div className="container"><div><span className="solar-kicker">Start with the system</span><h2>Let’s put the right<br />solution to work.</h2><p>Talk to PSA about pumping, water infrastructure and the energy to support it.</p></div><a className="button button-light" href="mailto:enquiries@pumpsystemsafrica.com">Discuss your project <ArrowRight size={18} /></a></div></section>
     {gallery && <Gallery project={gallery} onClose={() => setGallery(null)} />}
   </div>
 }
