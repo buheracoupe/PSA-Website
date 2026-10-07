@@ -16,7 +16,7 @@
 
 ## IN REVIEW — Stage 2 Homepage
 - [x] Hero section
-- [x] Supplier/brand strip with Wilo-first emphasis
+- [x] Manufacturer brand strip with equal logo treatment
 - [x] Services section
 - [x] Featured pump ranges
 - [x] Zimbabwe interactive-project-map section
@@ -29,7 +29,7 @@
 - [ ] Visual QA and consolidated revision pass
 
 ## LATER
-- [ ] Product architecture and Wilo-first catalogue
+- [ ] Product architecture and catalogue
 - [ ] Services + industries pages
 - [ ] Projects system and project detail pages
 - [ ] About / brands / contact / quote flow
@@ -38,4 +38,4 @@
 ## Design guardrails
 - Never redraw or fabricate PSA or manufacturer logos.
 - Use approved real project/manufacturer imagery when available; neutral placeholders are preferable to invented brand assets.
-- Wilo is the strategic primary supplier; KSB remains an important secondary/reference brand.
+- Do not describe Wilo as a strategic partner, primary supplier or strategic product focus, per management direction. Use neutral product descriptions and equal manufacturer logo treatment.

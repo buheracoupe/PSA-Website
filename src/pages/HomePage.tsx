@@ -7,7 +7,7 @@ const services = [
   { icon: Sun, title: 'Solar Installations', text: 'Solar-powered pumping and energy systems for resilient off-grid and hybrid applications.' },
 ]
 const products = [
-  { brand: 'Wilo', title: 'Wilo Pump Systems', text: 'Our strategic product focus for modern water movement, building services and infrastructure applications.' },
+  { brand: 'Wilo', title: 'Wilo Pump Systems', text: 'Pump systems for water movement, building services and infrastructure applications.' },
   { brand: 'KSB', title: 'Etanorm', text: 'A proven end-suction pump platform and an important part of Pump Systems Africa’s installed pumping experience.' },
   { brand: 'Pump Systems Africa', title: 'Multistage Pumps', text: 'Horizontal and vertical multistage configurations for higher-pressure duties and demanding installations.' },
 ]
@@ -46,7 +46,7 @@ export function HomePage() {
       <div className="hero-engineering-card"><div className="engineering-rings"><Droplets size={54}/></div><span className="eyebrow">Pump Systems Africa Engineering</span><h2>Built around the duty. Not the catalogue.</h2><p>We connect equipment selection, system design, installation and support into practical solutions that perform in the field.</p><div className="engineering-metrics"><span><Gauge/> System selection</span><span><ShieldCheck/> Field support</span></div></div>
     </div></section>
 
-    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span><small>Wilo is our primary strategic product focus</small></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className={brand.name==='Wilo'?'manufacturer-logo manufacturer-primary':'manufacturer-logo'} key={`${brand.name}-${index}`}><img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/><span className="manufacturer-name">{brand.name}</span></div>)}</div></div></section>
+    <section className="brand-rail"><div className="container brand-rail-heading"><span>Engineering with trusted manufacturers</span></div><div className="brand-marquee" aria-label="Pump Systems Africa manufacturers"><div className="brand-marquee-track">{[...manufacturers,...manufacturers].map((brand,index)=><div className="manufacturer-logo" key={`${brand.name}-${index}`}><img src={brand.logo} alt={`${brand.name} logo`} loading="lazy"/><span className="manufacturer-name">{brand.name}</span></div>)}</div></div></section>
 
     <section className="section home-section"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we deliver</span><h2>Systems, not just equipment.</h2></div><p>Established in 2007, Pump Systems Africa combines pump expertise with field engineering, water infrastructure and workshop support.</p></div><div className="service-grid">{services.map(({icon:Icon,title,text})=><article className="service-card" key={title}><div className="service-icon"><Icon/></div><h3>{title}</h3><p>{text}</p><Link to="/services">Discover capability <ArrowRight size={15}/></Link></article>)}</div></div></section>
 
