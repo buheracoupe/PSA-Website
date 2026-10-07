@@ -3,3 +3,6 @@ dist/
 .env
 .env.*
 *.local
+
+# Track the dashboard's safe configuration template, never live secrets.
+!tender-dashboard/.env.example

@@ -1,0 +1,36 @@
+import {randomUUID} from 'node:crypto';
+import {classify,identity} from './matching.mjs';
+export const id=()=>randomUUID();
+export class AppError extends Error{constructor(status,message){super(message);this.status=status;}}
+export const requireManager=u=>{if(u.role!=='manager')throw new AppError(403,'Only the Projects Manager can make review decisions.');};
+export const text=(v,name,max=500)=>{if(typeof v!=='string'||!v.trim()||v.length>max)throw new AppError(400,`${name} is required (maximum ${max} characters).`);return v.trim();};
+export function date(v){if(v===null||v===''||v===undefined)return null;if(typeof v!=='string'||!/(Z|[+-]\d\d:\d\d)$/.test(v)||!Number.isFinite(Date.parse(v)))throw new AppError(400,'Dates must include a valid timezone.');return new Date(v).toISOString();}
+export function deadlines(closing,internal,stage){if(stage==='preparing'&&(!closing||!internal))throw new AppError(400,'Preparing tenders need a closing deadline and internal target.');if(internal&&(!closing||new Date(internal)>=new Date(closing)))throw new AppError(400,'Internal target must be before closing.');}
+export async function audit(tx,tender,user,action,detail={}){await tx.query('INSERT INTO audit(id,tender_id,actor_id,action,detail) VALUES($1,$2,$3,$4,$5)',[id(),tender,user,action,JSON.stringify(detail)]);}
+export async function ownerExists(tx,owner){if(!await tx.one('SELECT id FROM users WHERE id=$1 AND active=TRUE',[owner]))throw new AppError(400,'Choose an active staff owner.');}
+export async function preparation(tx,tender,owner,due){for(const title of ['Review requirements and eligibility','Obtain supplier quotations','Prepare technical response','Approve pricing and submission'])await tx.query('INSERT INTO tasks(id,tender_id,title,assignee_id,due_at) VALUES($1,$2,$3,$4,$5)',[id(),tender,title,owner,due]);}
+export async function createTender(db,user,input){
+ const title=text(input.title,'Title'),issuer=text(input.issuer,'Issuing organisation'),reference=text(input.reference,'Reference',120),owner=text(input.owner_id,'Owner');
+ const stage=input.stage||'reviewing';if(!['reviewing','preparing'].includes(stage))throw new AppError(400,'Invalid initial stage.');
+ const closing=date(input.closing_at),internal=date(input.internal_at);deadlines(closing,internal,stage);
+ const description=typeof input.description==='string'?input.description.slice(0,50000):'';const m=classify(title,description);const key=identity({reference,issuer});
+ return db.transaction(async tx=>{
+  await ownerExists(tx,owner);const duplicate=await tx.one('SELECT id FROM tenders WHERE identity_key=$1',[key]);if(duplicate)throw new AppError(409,`This tender already exists (${duplicate.id}).`);
+  const tid=id();await tx.query(`INSERT INTO tenders(id,identity_key,reference,title,issuer,channel,description,closing_at,internal_at,owner_id,stage,score,matches,score_detail,verification) VALUES($1,$2,$3,$4,$5,'Manual',$6,$7,$8,$9,$10,$11,$12,$13,$14)`,[tid,key,reference,title,issuer,description,closing,internal,owner,stage,m.score,JSON.stringify(m.matches),JSON.stringify(m.detail),closing?'staff-confirmed':'deadline-missing']);
+  await preparation(tx,tid,owner,internal);await audit(tx,tid,user.id,'created',{stage});return {id:tid};
+ });
+}
+export async function reviewTender(db,user,tid,input){requireManager(user);if(!['pursued','watch','dismissed'].includes(input.decision))throw new AppError(400,'Choose pursue, watch or dismiss.');if(input.decision==='dismissed')text(input.reason,'Dismissal reason',1000);
+ return db.transaction(async tx=>{const t=await tx.one('SELECT * FROM tenders WHERE id=$1 FOR UPDATE',[tid]);if(!t)throw new AppError(404,'Tender not found.');if(t.review_status==='pursued')throw new AppError(409,'This tender has already been pursued.');
+  if(input.decision==='pursued'){const owner=text(input.owner_id,'Owner');await ownerExists(tx,owner);const closing=date(input.closing_at||t.closing_at?.toISOString?.()||t.closing_at),internal=date(input.internal_at);deadlines(closing,internal,'preparing');await tx.query("UPDATE tenders SET owner_id=$2,closing_at=$3,internal_at=$4,stage='preparing',verification='staff-confirmed',deadline_version=deadline_version+1 WHERE id=$1",[tid,owner,closing,internal]);if(!await tx.one('SELECT id FROM tasks WHERE tender_id=$1',[tid]))await preparation(tx,tid,owner,internal);}
+  await tx.query('UPDATE tenders SET review_status=$2,review_reason=$3,reviewed_by=$4,updated_at=NOW() WHERE id=$1',[tid,input.decision,String(input.reason||'').slice(0,1000),user.id]);await audit(tx,tid,user.id,'reviewed',{decision:input.decision,reason:input.reason||''});return {ok:true};});
+}
+export async function updateTask(db,user,taskId,input){if(typeof input.done!=='boolean')throw new AppError(400,'done must be a boolean');return db.transaction(async tx=>{const task=await tx.one('SELECT * FROM tasks WHERE id=$1 FOR UPDATE',[taskId]);if(!task)throw new AppError(404,'Task not found.');await tx.query('UPDATE tasks SET done=$2,done_at=$3 WHERE id=$1',[taskId,input.done,input.done?new Date():null]);await audit(tx,task.tender_id,user.id,'task_updated',{task:task.title,done:input.done});return {ok:true};});}
+export async function ingest(tx,source,notice){
+ const title=text(notice.title,'Title'),issuer=text(notice.issuer,'Issuer');const description=String(notice.description||'').slice(0,200000);const m=classify(title,description);if(!m.matches.length)return {skipped:true};
+ const externalId=text(notice.externalId,'External notice ID');const closing=date(notice.closing_at);const key=identity({...notice,issuer,title,sourceId:source.id});
+ const alias=await tx.one('SELECT tender_id FROM tender_sources WHERE source_id=$1 AND external_id=$2',[source.id,externalId]);let t=alias?await tx.one('SELECT * FROM tenders WHERE id=$1 FOR UPDATE',[alias.tender_id]):await tx.one('SELECT * FROM tenders WHERE identity_key=$1 FOR UPDATE',[key]);
+ if(!t){const tid=id();await tx.query('INSERT INTO tenders(id,identity_key,reference,title,issuer,channel,description,closing_at,notice_type,location,score,matches,score_detail,verification) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)',[tid,key,notice.reference||'',title,issuer,source.channel,description,closing,notice.notice_type||'Tender',notice.location||'Zimbabwe relevance needs review',m.score,JSON.stringify(m.matches),JSON.stringify(m.detail),closing?'source-unverified':'deadline-missing']);t=await tx.one('SELECT * FROM tenders WHERE id=$1',[tid]);await audit(tx,tid,null,'discovered',{source:source.name});}
+ else {const changed=(t.closing_at?new Date(t.closing_at).toISOString():null)!==closing;if(changed){await tx.query('UPDATE tenders SET proposed_closing=$2,proposal_pending=TRUE WHERE id=$1',[t.id,closing]);await audit(tx,t.id,null,'deadline_change_detected',{proposed:closing,source:source.name});}await tx.query('UPDATE tenders SET score=$2,matches=$3,score_detail=$4,description=$5,updated_at=NOW() WHERE id=$1',[t.id,m.score,JSON.stringify(m.matches),JSON.stringify(m.detail),description]);}
+ await tx.query('INSERT INTO tender_sources(tender_id,source_id,external_id,url) VALUES($1,$2,$3,$4) ON CONFLICT(source_id,external_id) DO UPDATE SET last_seen=NOW(),url=EXCLUDED.url',[t.id,source.id,externalId,notice.url||'']);return {id:t.id,score:m.score};
+}
