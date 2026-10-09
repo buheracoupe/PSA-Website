@@ -14,21 +14,28 @@
 - [x] README and developer commands
 - [x] Production build + lint validation
 
-## NEXT — Stage 2 Homepage
-- [ ] Hero section
-- [ ] Supplier/brand strip
-- [ ] Services section
-- [ ] Featured pump ranges
-- [ ] Zimbabwe interactive-project-map section
-- [ ] Solar solutions section
-- [ ] Industries section
-- [ ] Why PSA / trust section
-- [ ] Homepage CTA
-- [ ] Responsive visual QA
+## IN REVIEW — Stage 2 Homepage
+- [x] Hero section
+- [x] Manufacturer brand strip with equal logo treatment
+- [x] Services section
+- [x] Featured pump ranges
+- [x] Zimbabwe interactive-project-map section
+- [x] Solar solutions section
+- [x] Industries section
+- [x] Homepage CTA
+- [x] Responsive layout implementation
+- [ ] Replace neutral manufacturer/product placeholders with approved real logo and product assets
+- [ ] Local build/lint validation after pull
+- [ ] Visual QA and consolidated revision pass
 
 ## LATER
-- [ ] Product architecture and Wilo-first catalogue
+- [ ] Product architecture and catalogue
 - [ ] Services + industries pages
 - [ ] Projects system and project detail pages
 - [ ] About / brands / contact / quote flow
 - [ ] SEO / accessibility / Playwright / deployment
+
+## Design guardrails
+- Never redraw or fabricate PSA or manufacturer logos.
+- Use approved real project/manufacturer imagery when available; neutral placeholders are preferable to invented brand assets.
+- Do not describe Wilo as a strategic partner, primary supplier or strategic product focus, per management direction. Use neutral product descriptions and equal manufacturer logo treatment.

@@ -1,0 +1,2 @@
+import {config} from './config.mjs';import {openDB,migrate} from './db.mjs';import {startJobs} from './jobs.mjs';
+const c=config();if(!c.database)throw Error('Use the embedded server worker for local PGlite. A separate worker requires DATABASE_URL.');const db=await openDB(c);await migrate(db);const worker=startJobs(db,c);console.log('Worker running. Daily discovery: 08:00 CAT.');const keep=setInterval(()=>{},3600000);process.on('SIGINT',async()=>{worker.stop();clearInterval(keep);await db.close();process.exit(0);});

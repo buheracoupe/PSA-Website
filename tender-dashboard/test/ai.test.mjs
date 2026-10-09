@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {summarizeTender} from '../src/ai.mjs';
+test('AI is explicitly unavailable without a provider',async()=>{await assert.rejects(()=>summarizeTender({text:'Supply pumps.'}),e=>e.code==='AI_UNCONFIGURED');});
+test('AI requirements must quote the supplied source exactly',async()=>{await assert.rejects(()=>summarizeTender({text:'Supply pumps.'},{summarize:async()=>({summary:'Requirements',requirements:[{text:'Deadline tomorrow',quote:'Tomorrow'}]})}),/supporting source quote/);const r=await summarizeTender({text:'Supply pumps.'},{summarize:async()=>({summary:'Pump supply',requirements:[{text:'Supply pumps',quote:'Supply pumps.'}]})});assert.equal(r.needsHumanReview,true);});
